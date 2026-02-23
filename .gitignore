@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+uploads/
+model/
+.env
+config.py
+*.log
