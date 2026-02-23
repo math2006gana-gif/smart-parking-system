@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Car Parking System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚗 Smart Car Parking System</h1>
+            <p>Automatic Number Plate Recognition</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Camera Section -->
+            <div class="camera-section">
+                <div class="video-container">
+                    <video id="videoElement" autoplay playsinline></video>
+                    <canvas id="canvasElement" style="display: none;"></canvas>
+                </div>
+                
+                <div class="controls">
+                    <button id="startCamera" class="btn btn-primary">Start Camera</button>
+                    <button id="captureBtn" class="btn btn-success" disabled>📸 Capture Photo</button>
+                    <button id="stopCamera" class="btn btn-danger" disabled>Stop Camera</button>
+                </div>
+
+                <div id="statusMessage" class="status-message"></div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section">
+                <h2>Recognition Results</h2>
+                
+                <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Processing image...</p>
+                </div>
+
+                <div id="resultCard" class="result-card" style="display: none;">
+                    <div class="result-row">
+                        <span class="label">Vehicle Number:</span>
+                        <span id="plateNumber" class="value plate-number">-</span>
+                    </div>
+                    
+                    <div class="result-row">
+                        <span class="label">Confidence:</span>
+                        <span id="confidence" class="value">-</span>
+                    </div>
+                    
+                    <div class="result-row">
+                        <span class="label">Action:</span>
+                        <span id="action" class="value action-badge">-</span>
+                    </div>
+                    
+                    <div class="result-row">
+                        <span class="label">Record ID:</span>
+                        <span id="recordId" class="value">-</span>
+                    </div>
+                    
+                    <div class="result-row">
+                        <span class="label">Timestamp:</span>
+                        <span id="timestamp" class="value">-</span>
+                    </div>
+                </div>
+
+                <div id="errorCard" class="error-card" style="display: none;">
+                    <h3>❌ Error</h3>
+                    <p id="errorMessage"></p>
+                </div>
+
+                <!-- Captured Images -->
+                <div id="imagesSection" style="display: none;">
+                    <h3>Captured Images</h3>
+                    <div class="images-grid">
+                        <div class="image-box">
+                            <p>Original Image</p>
+                            <img id="originalImage" alt="Original" />
+                        </div>
+                        <div class="image-box">
+                            <p>Detected Plate</p>
+                            <img id="plateImage" alt="Plate ROI" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Smart Parking System | Python Flask + MySQL</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
